@@ -1,0 +1,26 @@
+<div class="container">
+  <section class="section">
+    <h1 class="title">Contact</h1>
+    <div class="column is-full">
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form)" novalidate>
+        <div class="control">
+          <label for="username" class="label">Username</label>
+          <input formControlName="username" id="username" />
+          <div
+            class="error"
+            *ngIf="form.get('username').hasError('required')"
+          >
+            Please provide a valid username
+          </div>
+        </div>
+        <div class="control">
+          <label for="email" class="label">Email</label>
+          <input formControlName="email" id="email" />
+        </div>
+        <input type="submit" [disabled]="!form.valid" />
+      </form>
+    </div>
+  </section>
+  <!--<p>{{ form.value | json }}</p>-->
+</div>
+

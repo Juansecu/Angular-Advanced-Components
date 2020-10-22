@@ -1,0 +1,14 @@
+form {
+  background: #fff;
+  padding: 26px;
+  border-radius: 5px;
+}
+
+.control {
+  margin: 28px 0;
+}
+
+.error {
+  font-size: 13px;
+  color: rgb(204, 38, 38);
+}

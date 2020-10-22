@@ -1,0 +1,48 @@
+<div class="container">
+  <section class="section">
+    <h1 class="title">PRODUCTS</h1>
+    <div class="columns">
+      <div class="column" *ngFor="let product of storeModel.storeProducts">
+        <app-without-status
+          [product]="product"
+          (selectedProduct)="onSelectedProduct($event)"
+        >
+        </app-without-status>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="purchasedProducts.length > 0">
+    <div class="columns">
+      <nav class="panel is-three-quarter column">
+        <p class="panel-heading">Detalle de compra</p>
+        <div class="panel-block" *ngFor="let product of purchasedProducts">
+          {{ product.title }}
+          <span class="item-price">
+            {{ product.price | currency }}
+          </span>
+        </div>
+      </nav>
+    </div>
+    <div class="columns">
+      <div class="column is-fullwidth">
+        <div class="is-pulled-right">
+          <div class="is-one-quarter">
+            <h2 class="title">Total: {{ getTotalPrice() | currency }}</h2>
+          </div>
+          <button
+            class="button is-link is-pulled-right is-danger"
+            (click)="makePayment()"
+          >
+            BUY NOW
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--<app-shopping-cart-status
+  [price]="totalPrice"
+  [storeModel]="storeModel.storeProducts"
+  (pay)="onPay()"
+></app-shopping-cart-status>-->
+<app-confirmation-alert></app-confirmation-alert>
